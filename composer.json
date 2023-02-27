@@ -1,0 +1,27 @@
+{
+    "name": "melaraby/victorylink",
+    "description": "VictoryLink package for easy integration",
+    "authors": [
+        {
+            "name": "Mohammed Elaraby",
+            "email": "mohammed.elaraby@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^8.1",
+        "ext-json": "*",
+        "ext-curl": "*",
+        "ext-simplexml": "*",
+        "ext-libxml": "*",
+        "spatie/data-transfer-object": "^3.9"
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^1.8",
+        "phpunit/phpunit": "^9.5.10"
+    },
+    "autoload": {
+        "psr-4": {
+        }
+    }
+}
