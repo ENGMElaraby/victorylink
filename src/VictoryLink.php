@@ -71,17 +71,24 @@ class VictoryLink
      */
     private function parseResponse(array $response): string
     {
-        return match ((int)$response[0]) {
-            ResponseCodes::SUCCESS->value => ResponseCodes::SUCCESS->name,
-            ResponseCodes::UserIsNotSubscribed->value => ResponseCodes::UserIsNotSubscribed->name,
-            ResponseCodes::OutOfCredit->value => ResponseCodes::OutOfCredit->name,
-            ResponseCodes::QueuedMessageNoNeedToSendItAgain->value => ResponseCodes::QueuedMessageNoNeedToSendItAgain->name,
-            ResponseCodes::InvalidLanguage->value => ResponseCodes::InvalidLanguage->name,
-            ResponseCodes::SMSIsEmpty->value => ResponseCodes::SMSIsEmpty->name,
-            ResponseCodes::InvalidFakeSenderExceeded12CharsOrEmpty->value => ResponseCodes::InvalidFakeSenderExceeded12CharsOrEmpty->name,
-            ResponseCodes::SendingRateGreaterThanReceivingRateOnlyForSendReceiveAccounts->value => ResponseCodes::SendingRateGreaterThanReceivingRateOnlyForSendReceiveAccounts->name,
-            ResponseCodes::OtherError->value => ResponseCodes::OtherError->name,
-            default => ResponseCodes::FAILED->name
-        };
+        return ResponseCodes::parseResponse( (int)$response[0]);
+    }
+
+    /**
+     * @param int $response
+     * @return bool
+     */
+    public function isSuccess(int $response): bool
+    {
+        return ResponseCodes::isSuccess($response);
+    }
+
+    /**
+     * @param int $response
+     * @return bool
+     */
+    public function isFailed(int $response): bool
+    {
+        return ResponseCodes::isFailed($response);
     }
 }
