@@ -1,6 +1,8 @@
 {
     "name": "melaraby/victorylink",
-    "description": "VictoryLink package for easy integration",
+    "description": "VictoryLink package for easy integration php application",
+    "type": "library",
+    "license": "MIT",
     "authors": [
         {
             "name": "Mohammed Elaraby",

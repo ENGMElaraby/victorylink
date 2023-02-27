@@ -1,4 +1,4 @@
-<?php /** @noinspection PhpPropertyNamingConventionInspection */
+<?php
 
 namespace MElaraby\VictoryLink;
 
