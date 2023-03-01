@@ -43,14 +43,25 @@ class VictoryLink
                 ])
                 ->getBody()
                 ->getContents();
-            $response = $this->ConvertXMLToArray($response);
-            $this->response = $this->parseResponse($response);
+
+            $this->response = $this->handleResponse($response);
             return $this;
         } catch (GuzzleException $e) {
             return $e->getMessage();
         } catch (UnknownProperties $e) {
             return $e->getMessage();
         }
+    }
+
+    /**
+     * @param string $response
+     * @return string
+     * @throws JsonException
+     */
+    private function handleResponse(string $response): string
+    {
+        $response = $this->ConvertXMLToArray($response);
+        return ResponseCodes::parseResponse((int)$response[0]);
     }
 
     /**
@@ -65,14 +76,6 @@ class VictoryLink
         return json_decode($json, TRUE, 512, JSON_THROW_ON_ERROR);
     }
 
-    /**
-     * @param array $response
-     * @return string
-     */
-    private function parseResponse(array $response): string
-    {
-        return ResponseCodes::parseResponse( (int)$response[0]);
-    }
 
     /**
      * @param int $response
