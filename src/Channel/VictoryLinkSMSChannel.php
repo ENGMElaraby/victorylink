@@ -24,7 +24,7 @@ class VictoryLinkSMSChannel
      */
     public function send(mixed $notifiable, Notification $notification): void
     {
-        if (!method_exists($notifiable, 'toSMS')) {
+        if (!method_exists($notification, 'toSMS')) {
             throw new MethodNotExists;
         }
 

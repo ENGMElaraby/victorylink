@@ -43,14 +43,13 @@ class VictoryLink
                 ])
                 ->getBody()
                 ->getContents();
-
             $this->response = $this->handleResponse($response);
-            return $this;
         } catch (GuzzleException $e) {
-            return $e->getMessage();
+            $this->response = $e->getMessage();
         } catch (UnknownProperties $e) {
-            return $e->getMessage();
+            $this->response = $e->getMessage();
         }
+        return $this;
     }
 
     /**
